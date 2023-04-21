@@ -5,8 +5,14 @@ public class Welcome {
 			return "Hello, my friend.";
 		}
 	
-		StringBuilder in= new StringBuilder();
-		in.append(input);
-		return "Hello " + in.toString().substring(0,1).toUpperCase()+in.toString().substring(1);
+	
+	if(input.equals(input.toUpperCase())) {
+		return "HELLO, " + input + "!";
+	}
+	
+	StringBuilder in= new StringBuilder();
+	input= input.substring(0,1).toUpperCase()+input.toString().substring(1);
+	in.append(input);
+	return "Hello, " + in.toString();
 	}
 }

@@ -9,10 +9,10 @@ class WelcomeTest {
 
 	@Test
 	void testEX_1() {
-		assertEquals(Welcome.welcome("Bob"),"Hello Bob");
-		assertEquals(Welcome.welcome("bob"),"Hello Bob");
-		assertEquals(Welcome.welcome("Maeva"),"Hello Maeva");
-		assertEquals(Welcome.welcome("maeva"),"Hello Maeva");
+		assertEquals(Welcome.welcome("Bob"),"Hello, Bob");
+		assertEquals(Welcome.welcome("bob"),"Hello, Bob");
+		assertEquals(Welcome.welcome("Maeva"),"Hello, Maeva");
+		assertEquals(Welcome.welcome("maeva"),"Hello, Maeva");
 	}
 	
 	@Test
@@ -21,6 +21,14 @@ class WelcomeTest {
 		assertEquals(Welcome.welcome(""),"Hello, my friend.");
 		assertEquals(Welcome.welcome(null),"Hello, my friend.");
 	}
+	
+
+	@Test
+	void testEX_3() {
+		assertEquals(Welcome.welcome("JERRY"),"HELLO, JERRY!");
+		assertEquals(Welcome.welcome("LAURA"),"HELLO, LAURA!");
+	}
+	
 
 
 }
