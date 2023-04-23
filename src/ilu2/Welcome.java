@@ -5,15 +5,63 @@ public class Welcome {
 		return "Hello, my friend.";
 	}
 	String[] personnes= input.split(",");
-	StringBuilder in= new StringBuilder();
+	int i=0,j=0;
+	String[] majuscule= new String[personnes.length], minuscule= new String[personnes.length];
 	for(String personne: personnes) {
-		in.append(", ");
 		if(personne.equals(personne.toUpperCase())) {
-			return "HELLO, " + input + "!";
+			majuscule[i]=personne;
+			i++;
+		}else{
+			minuscule[j]=personne;
+			j++;
 		}
-		personne = personne.substring(0,1).toUpperCase()+personne.toString().substring(1);
-		in.append(personne);
+	}
+	return leReturn(minuscule, majuscule,j,i) ;
+	}
+//################################################################################
+	
+	private static String minuscule(String[] input) {
+		StringBuilder in= new StringBuilder();
+		
+		if(input[0]==null) {
+			return "";
 		}
-	return "Hello" + in.toString();
+		
+		for(String personne: input) {
+			if(personne==null) {
+				return "Hello" + in.toString()+".";
+			}
+			in.append(", ");
+			personne = personne.substring(0,1).toUpperCase()+personne.toString().substring(1);
+			in.append(personne);
+		}
+		return "Hello" + in.toString()+".";
+	}
+//#################################################################################
+	
+	private static String majuscule(String[] input) {
+		StringBuilder in= new StringBuilder();
+		if(input[0]==null){	
+			return "";
+	}
+		for(String personne:input) {
+			if(personne==null) {
+				return "HELLO"+ in.toString() + "!";
+			}
+			in.append(", ");
+			in.append(personne);
+		}
+		return "HELLO"+ in.toString() + "!";
+	}
+//##################################################################################
+	
+private static String leReturn(String[] min, String[] maj, int i1, int i2){
+	if(i1<1) {
+		return majuscule(maj);
+	}
+	else if(i2<1) {
+		return minuscule(min);
+	}
+	return minuscule(min) + " AND " +majuscule(maj);
 	}
 }
