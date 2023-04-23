@@ -68,6 +68,7 @@ public class Welcome {
 //##################################################################################
 	
 private static String leReturn(String[] min, String[] maj, int i1, int i2){
+	
 	if(i1<1) {
 		return majuscule(maj,i2);
 	}
