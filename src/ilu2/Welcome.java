@@ -20,48 +20,60 @@ public class Welcome {
 	}
 //################################################################################
 	
-	private static String minuscule(String[] input) {
+	private static String minuscule(String[] input, int quantite) {
 		StringBuilder in= new StringBuilder();
-		
-		if(input[0]==null) {
+		if(quantite==0) {
 			return "";
 		}
 		
-		for(String personne: input) {
-			if(personne==null) {
-				return "Hello" + in.toString()+".";
-			}
-			in.append(", ");
-			personne = personne.substring(0,1).toUpperCase()+personne.toString().substring(1);
-			in.append(personne);
+		if(quantite==1){
+			input[quantite-1]= input[quantite-1].substring(0,1).toUpperCase()+input[quantite-1].toString().substring(1);
+			in.append(input[quantite-1]);
+			return "Hello, "+ in.toString() +".";
 		}
+		
+		for(int i=0;i<quantite-1;i++) {
+			in.append(", ");
+			input[i]= input[i].substring(0,1).toUpperCase()+input[i].toString().substring(1);
+			in.append(input[i]);
+		}
+		in.append(" and ");
+		input[quantite-1]= input[quantite-1].substring(0,1).toUpperCase()+input[quantite-1].toString().substring(1);
+		in.append(input[quantite-1]);
+		
 		return "Hello" + in.toString()+".";
 	}
 //#################################################################################
 	
-	private static String majuscule(String[] input) {
+	private static String majuscule(String[] input, int quantite) {
 		StringBuilder in= new StringBuilder();
-		if(input[0]==null){	
+		if(quantite==0){	
 			return "";
-	}
-		for(String personne:input) {
-			if(personne==null) {
-				return "HELLO"+ in.toString() + "!";
-			}
-			in.append(", ");
-			in.append(personne);
 		}
+		
+		if(quantite==1){
+			input[quantite-1]= input[quantite-1].substring(0,1).toUpperCase()+input[quantite-1].toString().substring(1);
+			in.append(input[quantite-1]);
+			return "HELLO, "+ in.toString()+"!";
+		}
+		
+		for(int i=0;i<quantite-1;i++){
+			in.append(", ");
+			in.append( input[i]);
+		}
+		in.append(" AND ");
+		in.append(input[quantite-1]);
 		return "HELLO"+ in.toString() + "!";
 	}
 //##################################################################################
 	
 private static String leReturn(String[] min, String[] maj, int i1, int i2){
 	if(i1<1) {
-		return majuscule(maj);
+		return majuscule(maj,i2);
 	}
 	else if(i2<1) {
-		return minuscule(min);
+		return minuscule(min,i1);
 	}
-	return minuscule(min) + " AND " +majuscule(maj);
+	return minuscule(min,i1) + " AND " +majuscule(maj,i2);
 	}
 }
