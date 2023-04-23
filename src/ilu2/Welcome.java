@@ -4,7 +4,7 @@ public class Welcome {
 	if(input==null||input.trim().length()==0){
 		return "Hello, my friend.";
 	}
-	String[] personnes= input.split(",");
+	String[] personnes= input.replace(" ", "").split(",");
 	int i=0,j=0;
 	String[] majuscule= new String[personnes.length], minuscule= new String[personnes.length];
 	for(String personne: personnes) {
@@ -68,7 +68,6 @@ public class Welcome {
 //##################################################################################
 	
 private static String leReturn(String[] min, String[] maj, int i1, int i2){
-	
 	if(i1<1) {
 		return majuscule(maj,i2);
 	}
